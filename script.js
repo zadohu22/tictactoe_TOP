@@ -57,8 +57,6 @@ const flipTurn = () => {
 
 const gameBoard = () => {
   let board = ["", "", "", "", "", "", "", "", ""];
-  let winner = false;
-
   setSignPlayerOne();
 
   let cells = document.querySelectorAll(".cell");
