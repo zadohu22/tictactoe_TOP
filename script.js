@@ -70,15 +70,25 @@ const gameBoard = () => {
       let playerOneWin = index.every((item) => playerOneMarks.includes(item));
       let playerTwoWin = index.every((item) => playerTwoMarks.includes(item));
       if (playerOneWin || playerTwoWin) {
-        alert(`${currentPlayer} wins!`);
-        playerOneMarks = [];
-        playerTwoMarks = [];
+        let overlay = document.getElementById("overlay")
+        let overlayText = document.getElementById("text")
+        let button = document.getElementById("playAgain");
 
-        board = ["", "", "", "", "", "", "", "", ""];
-        cells.forEach((cell) => {
-          cell.textContent = "";
-        });
-        setSignPlayerOne();
+        overlay.style.display = "block";
+        overlayText.innerText = `${currentPlayer} wins!`
+        playAgain.addEventListener('click', () => {
+          overlay.style.display = "none";
+          overlayText.innerText = "";
+          playerOneMarks = [];
+          playerTwoMarks = [];
+          cells.forEach((cell) => {
+            cell.textContent = "";
+          });
+          setSignPlayerOne();
+          board = ["", "", "", "", "", "", "", "", ""];
+        })
+        
+        
       }
     }
   }
