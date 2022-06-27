@@ -75,6 +75,10 @@ h1 {
   text-decoration: underline;
 }
 
+#start {
+  display: none;
+}
+
 .buttonContainer {
   display: -ms-grid;
   display: grid;

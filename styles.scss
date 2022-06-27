@@ -70,6 +70,10 @@ h1{
   text-decoration: underline;
 }
 
+#start{
+  display: none;
+}
+
 .buttonContainer{
   display: grid;
   grid-template-columns: 1fr 1fr;
