@@ -1,3 +1,4 @@
+
 let currentPlayer;
 let playerOne;
 let playerTwo;
@@ -27,7 +28,6 @@ const setSignPlayerOne = () => {
   let o = document.getElementById("o");
   x.classList.remove("hide");
   o.classList.remove("hide");
-  document.getElementById('start').style.display = "none"
   playerOne = undefined;
   playerTwo = undefined;
   currentPlayer = undefined;
@@ -38,7 +38,6 @@ const setSignPlayerOne = () => {
     playerTwo = Player("o").getSign();
     x.classList.add("hide");
     o.classList.add("hide");
-    document.getElementById('start').style.display = "block"
   });
   o.addEventListener("click", () => {
     playerOne = Player("o").getSign();
@@ -46,7 +45,6 @@ const setSignPlayerOne = () => {
     playerTwo = Player("x").getSign();
     x.classList.add("hide");
     o.classList.add("hide");
-    document.getElementById('start').style.display = "block"
   });
 };
 
@@ -59,7 +57,6 @@ const flipTurn = () => {
 };
 
 const gameBoard = () => {
-  let start = document.getElementById('start');
   
   let board = ["", "", "", "", "", "", "", "", ""];
   setSignPlayerOne();
@@ -97,31 +94,31 @@ const gameBoard = () => {
       }
     }
   }
-  start.addEventListener('click', () => {
-    start.style.display = "none";
-    let cellValues = cells.forEach((cell, i) => {
-      function mark() {
-        if (currentPlayer === playerOne) {
-          playerOneMarks.push(parseInt(cell.dataset.index));
-        } else if (currentPlayer === playerTwo) {
-          playerTwoMarks.push(parseInt(cell.dataset.index));
-        }
+ 
+    
+  let cellValues = cells.forEach((cell, i) => {
+    function mark() {
+      if (currentPlayer === playerOne) {
+        playerOneMarks.push(parseInt(cell.dataset.index));
+      } else if (currentPlayer === playerTwo) {
+        playerTwoMarks.push(parseInt(cell.dataset.index));
       }
-  
-      cell.addEventListener("click", () => {
-        if (cell.textContent == "" && currentPlayer != undefined) {
-          mark();
-          board.splice(i, 1, currentPlayer);
-          cell.textContent = board[i];
-          checkWin();
-          flipTurn();
-        }
-      });
+    }
+
+    cell.addEventListener("click", () => {
+      if (cell.textContent == "" && currentPlayer != undefined) {
+        mark();
+        board.splice(i, 1, currentPlayer);
+        cell.textContent = board[i];
+        checkWin();
+        flipTurn();
+      }
     });
-  })
+  });
   
 
   return { cellValues };
 };
 
 gameBoard();
+

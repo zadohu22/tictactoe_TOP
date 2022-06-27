@@ -70,9 +70,6 @@ h1{
   text-decoration: underline;
 }
 
-#start{
-  display: none;
-}
 
 .buttonContainer{
   display: grid;
@@ -82,8 +79,8 @@ h1{
 }
 
 button{
-  padding: 10px 20px;
-  font-size: 20px;
+  padding: 5px 10px;
+  font-size: 16px;
   background-color: transparent;
   border: 1px solid $white;
   cursor: pointer;
