@@ -1,4 +1,3 @@
-
 let currentPlayer;
 let playerOne;
 let playerTwo;
@@ -91,6 +90,24 @@ const gameBoard = () => {
         })
         
         
+      }else if(playerOneMarks.length == 5 || playerTwoMarks.length == 5){
+        let overlay = document.getElementById("overlay")
+        let overlayText = document.getElementById("text")
+        let button = document.getElementById("playAgain");
+
+        overlay.style.display = "block";
+        overlayText.innerText = `It's a draw!`
+        playAgain.addEventListener('click', () => {
+          overlay.style.display = "none";
+          overlayText.innerText = "";
+          playerOneMarks = [];
+          playerTwoMarks = [];
+          cells.forEach((cell) => {
+            cell.textContent = "";
+          });
+          setSignPlayerOne();
+          board = ["", "", "", "", "", "", "", "", ""];
+        })
       }
     }
   }
@@ -110,6 +127,8 @@ const gameBoard = () => {
         mark();
         board.splice(i, 1, currentPlayer);
         cell.textContent = board[i];
+        console.log(playerOneMarks)
+        console.log(playerTwoMarks)
         checkWin();
         flipTurn();
       }
